@@ -13,11 +13,11 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors({
-  origin: true,                   // true so that automates scripts and dashboards can access the APIs (replace with process.env.CLIENT_URL)
-  credentials: true
-}));
+const corsOptions = {
+    origin: (origin, callback) => callback(null, origin || '*'),
+    credentials: true
+};
+app.use(cors(corsOptions));
 
 
 
